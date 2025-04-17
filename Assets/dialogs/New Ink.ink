@@ -11,3 +11,5 @@ VAR CharName = "Nova"
 ~ CharName = "User"
  
     "Ah," he replied, not unkindly. "I see you are feeling frustrated. Tomorrow, things will improve."
+    
+    

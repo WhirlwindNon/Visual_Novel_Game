@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 69274690}
   - component: {fileID: 69274694}
   - component: {fileID: 69274693}
+  - component: {fileID: 69274695}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -233,6 +234,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogInstaller: {fileID: 69274693}
+--- !u!114 &69274695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69274689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77378d8eb5beb8a4f8dd7da4d9971976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &161620585
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChoiseButton
       objectReference: {fileID: 0}
+    - target: {fileID: 728684286268301121, guid: edeb1c5910898ab4389672741e668001, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1701170773071956631, guid: edeb1c5910898ab4389672741e668001, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -975,7 +992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1701170773071956631, guid: edeb1c5910898ab4389672741e668001, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1701170773071956631, guid: edeb1c5910898ab4389672741e668001, type: 3}
       propertyPath: m_AnchorMin.x
@@ -983,7 +1000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1701170773071956631, guid: edeb1c5910898ab4389672741e668001, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1701170773071956631, guid: edeb1c5910898ab4389672741e668001, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1023,11 +1040,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1701170773071956631, guid: edeb1c5910898ab4389672741e668001, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 88.30554
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1701170773071956631, guid: edeb1c5910898ab4389672741e668001, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -37.94615
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1701170773071956631, guid: edeb1c5910898ab4389672741e668001, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

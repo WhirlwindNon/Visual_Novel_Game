@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using Ink.Runtime;
-
 using TMPro;
-
 using UnityEngine;
 
 public class DialogInstaller : MonoBehaviour

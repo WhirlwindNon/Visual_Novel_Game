@@ -65,11 +65,11 @@ public class Dialogs : MonoBehaviour
     
     private void StartDialog()
     {
-        DialogPlay = true; // ставить в метод с которого история начинается
-        _dialogPanel.SetActive(true); // диалог появляется
+        DialogPlay = true; 
+        _dialogPanel.SetActive(true); 
         ContinueDialog();
     }
-
+    
     private void ShowDialog()
     {
         _dialogText.text = _currentStory.Continue();
@@ -100,6 +100,7 @@ public class Dialogs : MonoBehaviour
 
     private void ExitDialog()
     {
+        Debug.Log("end");
         DialogPlay = false;
         _dialogPanel.SetActive(false);
     }
