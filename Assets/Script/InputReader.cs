@@ -7,11 +7,11 @@ using UnityEngine.InputSystem;
 public class InputReader : MonoBehaviour, Controls.IDialogueActions
 {
      Controls _inputActions;
-     Dialogs _dialogs;
+     DialogController _dialogController;
 
      private void OnEnable()
      {
-         _dialogs = FindObjectOfType<Dialogs>();
+         _dialogController = FindObjectOfType<DialogController>();
          
          if (_inputActions != null)
          {
@@ -30,9 +30,9 @@ public class InputReader : MonoBehaviour, Controls.IDialogueActions
      
     public void OnNextPhrases(InputAction.CallbackContext context)
     {
-        if (context.started && _dialogs.DialogPlay)
+        if (context.started && _dialogController.DialogPlay)
         {
-            _dialogs.ContinueDialog();
+            _dialogController.ContinueDialog();
             
         }
     }

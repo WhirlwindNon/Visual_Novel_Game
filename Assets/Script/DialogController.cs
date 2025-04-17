@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using Ink.Runtime;
+
 using TMPro;
+
 using Unity.VisualScripting;
+
 using UnityEngine;
+
 using Zenject;
 
-public class Dialogs : MonoBehaviour
+public class DialogController : MonoBehaviour
 {
     private Story _currentStory;
     private TextAsset _inkJson;
@@ -19,25 +24,21 @@ public class Dialogs : MonoBehaviour
     private GameObject _choiceButtonPanel;
     private GameObject _choiceButton;
     private List<TextMeshProUGUI> _choicesText = new();
-    
+
     public bool DialogPlay { get; private set; }
 
-    [Inject]
-    public void Contract(DialogInstaller dialogInstaller)
+    public void Initialize(DialogParameters context)
     {
-        _inkJson = dialogInstaller.inkJson;
-        _dialogPanel = dialogInstaller.DialogPanel;
-        _dialogText = dialogInstaller.DialogText;
-        _nameCharText = dialogInstaller.NameCharText;
-        _choiceButtonPanel = dialogInstaller.ChoiceButtonPanel;
-        _choiceButton = dialogInstaller.ChoiceButton;
+        _inkJson = context.inkJson;
+        _dialogPanel = context.DialogPanel;
+        _dialogText = context.DialogText;
+        _nameCharText = context.NameCharText;
+        _choiceButtonPanel = context.ChoiceButtonPanel;
+        _choiceButton = context.ChoiceButton;
         
-    } 
-    
-    private void Awake()
-    {
         _currentStory = new Story(_inkJson.text);
     }
+
 
     void Start()
     {
@@ -49,7 +50,7 @@ public class Dialogs : MonoBehaviour
         _currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueDialog();
     }
-    
+
     public void ContinueDialog()
     {
         if (_currentStory.canContinue)
@@ -62,18 +63,18 @@ public class Dialogs : MonoBehaviour
             ExitDialog();
         }
     }
-    
+
     private void StartDialog()
     {
-        DialogPlay = true; 
-        _dialogPanel.SetActive(true); 
+        DialogPlay = true;
+        _dialogPanel.SetActive(true);
         ContinueDialog();
     }
-    
+
     private void ShowDialog()
     {
         _dialogText.text = _currentStory.Continue();
-        _nameCharText.text = (string)_currentStory.variablesState["CharName"];
+        _nameCharText.text = (string) _currentStory.variablesState["CharName"];
     }
 
     private void ShowChoiceButton()
@@ -94,7 +95,7 @@ public class Dialogs : MonoBehaviour
 
             TextMeshProUGUI choiceText = choice.GetComponentInChildren<TextMeshProUGUI>();
             choiceText.text = currentChoices[i].text;
-            _choicesText.Add(choiceText); 
+            _choicesText.Add(choiceText);
         }
     }
 
@@ -104,5 +105,4 @@ public class Dialogs : MonoBehaviour
         DialogPlay = false;
         _dialogPanel.SetActive(false);
     }
-
 }

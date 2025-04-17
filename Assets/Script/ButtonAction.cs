@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,13 +6,16 @@ public class ButtonAction : MonoBehaviour
 {
     public int Index;
     private Button _button;
-    private Dialogs _dialogs;
+    private DialogController _dialogController;
     private UnityAction _clickAcktion;
+
     void Start()
     {
         _button = GetComponent<Button>();
-        _dialogs = FindObjectOfType<Dialogs>(); // лучше не использовать метод "найти" когда много объектов в котором используется одинаковый скрипт
-        _clickAcktion = new UnityAction((() => _dialogs.ChoiceButtonAction(Index)));
+        _dialogController =
+            FindObjectOfType<DialogController>(); // лучше не использовать метод "найти" когда много объектов в котором используется одинаковый скрипт
+
+        _clickAcktion = new UnityAction((() => _dialogController.ChoiceButtonAction(Index)));
         _button.onClick.AddListener(_clickAcktion);
     }
 
@@ -22,5 +23,4 @@ public class ButtonAction : MonoBehaviour
     {
         Debug.Log("hi");
     }
-    
 }

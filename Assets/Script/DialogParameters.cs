@@ -1,7 +1,11 @@
+using System;
+
 using TMPro;
+
 using UnityEngine;
 
-public class DialogInstaller : MonoBehaviour
+[Serializable]
+public class DialogParameters
 {
     public TextAsset inkJson;
 
@@ -11,5 +15,4 @@ public class DialogInstaller : MonoBehaviour
 
     public GameObject ChoiceButtonPanel;
     public GameObject ChoiceButton;
-   
 }
