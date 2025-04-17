@@ -26,11 +26,11 @@ public class Dialogs : MonoBehaviour
     public void Contract(DialogInstaller dialogInstaller)
     {
         _inkJson = dialogInstaller.inkJson;
-        _dialogPanel = dialogInstaller.dialogPanel;
-        _dialogText = dialogInstaller.dialogText;
-        _nameCharText = dialogInstaller.nameCharText;
-        _choiceButtonPanel = dialogInstaller.choiceButtonPanel;
-        _choiceButton = dialogInstaller.choiceButton;
+        _dialogPanel = dialogInstaller.DialogPanel;
+        _dialogText = dialogInstaller.DialogText;
+        _nameCharText = dialogInstaller.NameCharText;
+        _choiceButtonPanel = dialogInstaller.ChoiceButtonPanel;
+        _choiceButton = dialogInstaller.ChoiceButton;
         
     } 
     
@@ -89,7 +89,7 @@ public class Dialogs : MonoBehaviour
         for (int i = 0; i < currentChoices.Count; i++)
         {
             GameObject choice = Instantiate(_choiceButton);
-            choice.GetComponent<ButtonAction>().index = i;
+            choice.GetComponent<ButtonAction>().Index = i;
             choice.transform.SetParent(_choiceButtonPanel.transform);
 
             TextMeshProUGUI choiceText = choice.GetComponentInChildren<TextMeshProUGUI>();

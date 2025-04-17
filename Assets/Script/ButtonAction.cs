@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ButtonAction : MonoBehaviour
 {
-    public int index;
+    public int Index;
     private Button _button;
     private Dialogs _dialogs;
     private UnityAction _clickAcktion;
@@ -14,7 +14,7 @@ public class ButtonAction : MonoBehaviour
     {
         _button = GetComponent<Button>();
         _dialogs = FindObjectOfType<Dialogs>(); // лучше не использовать метод "найти" когда много объектов в котором используется одинаковый скрипт
-        _clickAcktion = new UnityAction((() => _dialogs.ChoiceButtonAction(index)));
+        _clickAcktion = new UnityAction((() => _dialogs.ChoiceButtonAction(Index)));
         _button.onClick.AddListener(_clickAcktion);
     }
 
