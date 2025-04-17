@@ -5,13 +5,12 @@ namespace VisualNovelGame
 {
     public class InputReader : MonoBehaviour, Controls.IDialogueActions
     {
+        [SerializeField] private DialogController _dialogController;
+
         private Controls _inputActions;
-        private DialogController _dialogController;
 
         private void OnEnable()
         {
-            _dialogController = FindObjectOfType<DialogController>();
-
             if (_inputActions != null)
             {
                 return;
@@ -29,7 +28,7 @@ namespace VisualNovelGame
 
         public void OnNextPhrases(InputAction.CallbackContext context)
         {
-            if (context.started && _dialogController.DialogPlay)
+            if (context.started && _dialogController.IsDialogPlaying)
             {
                 _dialogController.ContinueDialog();
             }

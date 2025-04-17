@@ -10,6 +10,8 @@ namespace VisualNovelGame
 {
     public class DialogController : MonoBehaviour
     {
+        public bool IsDialogPlaying { get; private set; }
+
         private Story _currentStory;
         private TextAsset _inkJson;
 
@@ -18,10 +20,9 @@ namespace VisualNovelGame
         private TextMeshProUGUI _nameCharText;
 
         private GameObject _choiceButtonPanel;
-        private GameObject _choiceButton;
-        private List<TextMeshProUGUI> _choicesText = new List<TextMeshProUGUI>();
+        private ButtonView _choiceButtonPrefab;
 
-        public bool DialogPlay { get; private set; }
+        private List<ButtonView> _createdViews = new List<ButtonView>();
 
         public void Initialize(DialogParameters context)
         {
@@ -30,20 +31,22 @@ namespace VisualNovelGame
             _dialogText = context.DialogText;
             _nameCharText = context.NameCharText;
             _choiceButtonPanel = context.ChoiceButtonPanel;
-            _choiceButton = context.ChoiceButton;
+            _choiceButtonPrefab = context.ChoiceButtonPrefab;
 
             _currentStory = new Story(_inkJson.text);
         }
 
-        private void Start()
+        public void Run()
         {
             StartDialog();
         }
 
-        public void ChoiceButtonAction(int choiceIndex)
+        public void Dispose()
         {
-            _currentStory.ChooseChoiceIndex(choiceIndex);
-            ContinueDialog();
+            foreach (var view in _createdViews)
+            {
+                view.ButtonClicked -= ChoiceButtonAction;
+            }
         }
 
         public void ContinueDialog()
@@ -59,9 +62,15 @@ namespace VisualNovelGame
             }
         }
 
+        private void ChoiceButtonAction(int choiceIndex)
+        {
+            _currentStory.ChooseChoiceIndex(choiceIndex);
+            ContinueDialog();
+        }
+
         private void StartDialog()
         {
-            DialogPlay = true;
+            IsDialogPlaying = true;
             _dialogPanel.SetActive(true);
             ContinueDialog();
         }
@@ -84,20 +93,20 @@ namespace VisualNovelGame
 
             for (var i = 0; i < currentChoices.Count; i++)
             {
-                var choice = Instantiate(_choiceButton);
-                choice.GetComponent<ButtonAction>().Index = i;
-                choice.transform.SetParent(_choiceButtonPanel.transform);
+                var choiceButtonView = Instantiate(_choiceButtonPrefab, _choiceButtonPanel.transform);
 
-                var choiceText = choice.GetComponentInChildren<TextMeshProUGUI>();
-                choiceText.text = currentChoices[i].text;
-                _choicesText.Add(choiceText);
+                choiceButtonView.ButtonClicked += ChoiceButtonAction;
+
+                choiceButtonView.SetIndex(i);
+                choiceButtonView.SetText(currentChoices[i].text);
+                _createdViews.Add(choiceButtonView);
             }
         }
 
         private void ExitDialog()
         {
             Debug.Log("end");
-            DialogPlay = false;
+            IsDialogPlaying = false;
             _dialogPanel.SetActive(false);
         }
     }

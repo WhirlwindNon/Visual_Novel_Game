@@ -16,6 +16,6 @@ namespace VisualNovelGame
         public TextMeshProUGUI NameCharText;
 
         public GameObject ChoiceButtonPanel;
-        public GameObject ChoiceButton;
+        public ButtonView ChoiceButtonPrefab;
     }
 }

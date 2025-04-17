@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 
 namespace VisualNovelGame
 {
@@ -10,6 +12,16 @@ namespace VisualNovelGame
         private void Awake()
         {
             _dialogController.Initialize(_dialogParameters);
+        }
+
+        private void Start()
+        {
+            _dialogController.Run();
+        }
+
+        private void OnDestroy()
+        {
+            _dialogController.Dispose();
         }
     }
 }
