@@ -268,3 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e45fe5ab2554cc4eb0294337a8369f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 223794533157758018}
+  _dialogController: {fileID: 0}
+  _button: {fileID: 5365731047307211694}
