@@ -7,10 +7,12 @@ namespace VisualNovelGame
         private readonly LocationParameters _locationParameters;
 
         private int _currentLocationIndex = 0;
+        private int _locationCount = 0;
 
         public LocationController(LocationParameters locationParameters)
         {
             _locationParameters = locationParameters;
+            _locationCount = _locationParameters.BackgroundConfig.Backgrounds.Length;
         }
 
         public void Initialize()
@@ -35,12 +37,16 @@ namespace VisualNovelGame
 
         private void ChooseNext()
         {
+            if (_currentLocationIndex + 1 > _locationCount - 1)
+                return;
             ++_currentLocationIndex;
             SetBackground(_currentLocationIndex);
         }
 
         private void ChoosePrevious()
         {
+            if (_currentLocationIndex - 1 < 0)
+                return;
             --_currentLocationIndex;
             SetBackground(_currentLocationIndex);
         }
