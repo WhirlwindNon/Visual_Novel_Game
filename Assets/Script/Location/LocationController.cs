@@ -1,59 +1,67 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace VisualNovelGame
 {
     public class LocationController
     {
-        private readonly LocationParameters _locationParameters;
-
-        private int _currentLocationIndex = 0;
         private int _locationCount = 0;
 
-        public LocationController(LocationParameters locationParameters)
+        private GameObject[] _locations;
+        private Hashtable _locations_hashtable = new Hashtable();
+
+        public LocationController(GameObject[] locations)
         {
-            _locationParameters = locationParameters;
-            _locationCount = _locationParameters.BackgroundConfig.Backgrounds.Length;
+            _locationCount = locations.Length;
+            _locations = locations;
         }
 
         public void Initialize()
         {
-            _locationParameters.NextButton.onClick.AddListener(ChooseNext);
-            _locationParameters.PreviousButton.onClick.AddListener(ChoosePrevious);
+            foreach (GameObject location in _locations)
+            {
+                Button[] _buttons = location.GetComponentsInChildren<Button>();
+                foreach (Button button in _buttons)
+                {
+                    button.onClick.AddListener(() => ChooseLocation(button.gameObject.name));
+                }
+                _locations_hashtable[location.gameObject.name] = location;
+            }
+            DisableAllLocations();
 
-            SetBackground(_currentLocationIndex);
-        }
-
-        private void SetBackground(int index)
-        {
-            var background = _locationParameters.BackgroundConfig.Backgrounds[index];
-            SetSprite(background);
+            _locations[0].SetActive(true);
         }
 
         public void Dispose()
         {
-            _locationParameters.NextButton.onClick.RemoveListener(ChooseNext);
-            _locationParameters.PreviousButton.onClick.RemoveListener(ChoosePrevious);
+            foreach (GameObject location in _locations)
+            {
+                Button[] _buttons = location.GetComponentsInChildren<Button>();
+                foreach (Button button in _buttons)
+                {
+                    button.onClick.RemoveAllListeners();
+                }
+            }
         }
 
-        private void ChooseNext()
+        private void ChooseLocation(string index)
         {
-            if (_currentLocationIndex + 1 > _locationCount - 1)
-                return;
-            ++_currentLocationIndex;
-            SetBackground(_currentLocationIndex);
+            DisableAllLocations();
+            GetLocation(index).SetActive(true);
         }
 
-        private void ChoosePrevious()
+        private void DisableAllLocations()
         {
-            if (_currentLocationIndex - 1 < 0)
-                return;
-            --_currentLocationIndex;
-            SetBackground(_currentLocationIndex);
+            foreach (GameObject location in _locations)
+            {
+                location.SetActive(false);
+            }
         }
 
-        private void SetSprite(Sprite sprite)
+        public GameObject GetLocation(string id)
         {
-            _locationParameters.BackgroundImage.sprite = sprite;
+            return (GameObject)_locations_hashtable[id];
         }
     }
 }
