@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-
 using Ink.Runtime;
-
 using TMPro;
-
 using UnityEngine;
 
 namespace VisualNovelGame
@@ -78,7 +75,7 @@ namespace VisualNovelGame
         private void ShowDialog()
         {
             _dialogText.text = _currentStory.Continue();
-            _nameCharText.text = (string) _currentStory.variablesState["CharName"];
+            _nameCharText.text = (string)_currentStory.variablesState["CharName"];
         }
 
         private void ShowChoiceButton()
@@ -93,7 +90,10 @@ namespace VisualNovelGame
 
             for (var i = 0; i < currentChoices.Count; i++)
             {
-                var choiceButtonView = Instantiate(_choiceButtonPrefab, _choiceButtonPanel.transform);
+                var choiceButtonView = Instantiate(
+                    _choiceButtonPrefab,
+                    _choiceButtonPanel.transform
+                );
 
                 choiceButtonView.ButtonClicked += ChoiceButtonAction;
 

@@ -11,6 +11,8 @@ namespace VisualNovelGame
         private GameObject[] _locations;
         private Hashtable _locations_hashtable = new Hashtable();
 
+        private GameObject[] _characters;
+
         public LocationController(GameObject[] locations)
         {
             _locationCount = locations.Length;
@@ -21,7 +23,9 @@ namespace VisualNovelGame
         {
             foreach (GameObject location in _locations)
             {
-                Button[] _buttons = location.GetComponentsInChildren<Button>();
+                GameObject LocationChange = location.transform.GetChild(1).gameObject;
+                GameObject CharactersNode = location.transform.GetChild(2).gameObject;
+                Button[] _buttons = LocationChange.GetComponentsInChildren<Button>();
                 foreach (Button button in _buttons)
                 {
                     button.onClick.AddListener(() => ChooseLocation(button.gameObject.name));
@@ -37,6 +41,7 @@ namespace VisualNovelGame
         {
             foreach (GameObject location in _locations)
             {
+                GameObject LocationChange = location.transform.GetChild(1).gameObject;
                 Button[] _buttons = location.GetComponentsInChildren<Button>();
                 foreach (Button button in _buttons)
                 {
