@@ -13,7 +13,7 @@ namespace VisualNovelGame
                 " {\n    \"model\": \"llama3.2-vision:11b\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": \"привет как дела?\"\n        }\n    ],\n    \"stream\": false\n}\n ";
 
             using (var www =
-                   UnityWebRequest.Post("http://www.phimosis.space:3002/api/chat", json, "application/json"))
+                   UnityWebRequest.Post("http://ollama.phimosis.space", json, "application/json"))
             {
                 Debug.Log("ready");
                 yield return www.SendWebRequest();
