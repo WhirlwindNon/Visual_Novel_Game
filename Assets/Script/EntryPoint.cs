@@ -20,7 +20,7 @@ namespace VisualNovelGame
         {
             _locationController = new LocationController(_locations);
 
-            _dialogController.Initialize(_dialogParameters);
+            _dialogController.Initialize(_dialogParameters, _locations);
             _locationController.Initialize();
         }
 

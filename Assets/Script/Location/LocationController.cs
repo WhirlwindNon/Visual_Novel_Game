@@ -24,7 +24,6 @@ namespace VisualNovelGame
             foreach (GameObject location in _locations)
             {
                 GameObject LocationChange = location.transform.GetChild(1).gameObject;
-                GameObject CharactersNode = location.transform.GetChild(2).gameObject;
                 Button[] _buttons = LocationChange.GetComponentsInChildren<Button>();
                 foreach (Button button in _buttons)
                 {
