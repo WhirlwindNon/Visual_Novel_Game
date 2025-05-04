@@ -1667,8 +1667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 17.666138, y: -801.8294}
-  m_SizeDelta: {x: -318.2527, y: -1766.3456}
+  m_AnchoredPosition: {x: 17.666138, y: -802.82935}
+  m_SizeDelta: {x: -318.2527, y: -1768.3456}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752013837
 MonoBehaviour:
@@ -1978,7 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogParameters:
-    inkJson: {fileID: 4900000, guid: bc2b3cc11b3418d7f929cfc711ae71f2, type: 3}
+    inkJson: {fileID: 4900000, guid: 339f969f62eb96b74b1e67cb01daedfc, type: 3}
     DialogPanel: {fileID: 752013835}
     DialogPanelAI: {fileID: 1940812597}
     DialogText: {fileID: 161620587}
@@ -2748,7 +2748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.51100004, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 529.17, y: 305}
+  m_AnchoredPosition: {x: -1592, y: 1330}
   m_SizeDelta: {x: -1144.9562, y: -249.8337}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305386479
@@ -4272,8 +4272,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 983129099}
-  - {fileID: 752013836}
   - {fileID: 1940812598}
+  - {fileID: 752013836}
   m_Father: {fileID: 920356638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5343,7 +5343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2121082061
 RectTransform:
   m_ObjectHideFlags: 0

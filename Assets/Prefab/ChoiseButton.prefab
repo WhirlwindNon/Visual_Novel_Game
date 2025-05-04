@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -171,8 +171,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 88.30554, y: -37.94615}
-  m_SizeDelta: {x: 149.8017, y: 75.8923}
+  m_AnchoredPosition: {x: 1002.38873, y: -130.24841}
+  m_SizeDelta: {x: 2004.7764, y: 260.4965}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7185583614350495064
 CanvasRenderer:
@@ -269,5 +269,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMeshPro: {fileID: 223794533157758018}
-  _dialogController: {fileID: 0}
   _button: {fileID: 5365731047307211694}
