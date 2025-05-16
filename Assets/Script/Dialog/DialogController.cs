@@ -21,6 +21,8 @@ public class DialogController : MonoBehaviour {
   private InputField _dialogTextAI;
 
   private TextMeshProUGUI _nameCharText;
+  private TextMeshProUGUI _Relationship;
+  private TextMeshProUGUI _outputField;
 
   private GameObject _choiceButtonPanel;
   private ButtonView _choiceButtonPrefab;
@@ -43,6 +45,10 @@ public class DialogController : MonoBehaviour {
     _nameCharText = context.NameCharText;
     _choiceButtonPanel = context.ChoiceButtonPanel;
     _choiceButtonPrefab = context.ChoiceButtonPrefab;
+    _Relationship = _dialogPanelAI.GetComponentInChildren<TextMeshProUGUI>();
+    // _outputField = _dialogPanelAI.GetComponentInChildren<Image>()
+    //                    .GetComponentInChildren<TextMeshProUGUI>();
+    // _outputField = tmp.GetComponentInChildren<TextMeshProUGUI>();
 
     _currentStory = new Story(_inkJson.text);
 
@@ -132,6 +138,7 @@ public class DialogController : MonoBehaviour {
         "{\"role\": \"user\", \"content\":\"" + _dialogTextAI.text + "\" }");
     _context.messages.Add(msg);
     StartCoroutine(GetSimpleRequest());
+    _dialogTextAI.text = "";
   }
 
   public IEnumerator GetSimpleRequest() {
@@ -144,10 +151,14 @@ public class DialogController : MonoBehaviour {
       yield return www.SendWebRequest();
 
       if (www.result == UnityWebRequest.Result.Success) {
-        Debug.Log(www.downloadHandler.text);
         LlamaResponse llama =
             JsonUtility.FromJson<LlamaResponse>(www.downloadHandler.text);
+        Content content = JsonUtility.FromJson<Content>(llama.message.content);
+        Debug.Log(content.text);
+        // _outputField.text = content.text;
+        _Relationship.text = content.relationship;
         _context.messages.Add(llama.message);
+
       } else {
         Debug.Log(www.downloadHandler.text);
         Debug.Log(www.error);
